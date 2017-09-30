@@ -1,0 +1,196 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Skålpundsvägen
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 8
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Stockholm
+  
+  customize: !include customize.yaml
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables support for tracking state changes over time
+history:
+recorder:
+  purge_days: 2
+
+octoprint:
+  host: 192.168.1.13
+  api_key: BEEE66BA7C60445D94E5A9F18F4B79A4
+  bed: true
+  number_of_tools: 1
+
+light:
+  platform: hue
+  host: 192.168.1.2
+
+blink:
+  username: !secret blink_login
+  password: !secret blink_password
+
+media_player:
+  - platform: cast
+    host: 192.168.1.40
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+  - platform: samsungtv
+    host: 192.168.1.51
+
+notify:
+  - name: push
+    platform: pushover
+    api_key: !secret pushover_api_key
+    user_key: !secret pushover_user_key
+
+zwave:
+  usb_path: /dev/ttyACM0
+
+tradfri:
+  host: 192.168.1.3
+  api_key: !secret tradfri_key
+
+mqtt:
+  broker: 192.168.1.100
+  port: 1883
+  client_id: homeassistant
+  keepalive: 60
+
+influxdb:
+  host: 192.168.1.10
+  database: homeassistant
+
+alarm_control_panel:
+  platform: manual
+  name: 'HA Alarm'
+  pending_time: 45
+  trigger_time: 15
+  disarm_after_trigger: false
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+#discovery:
+
+hassio:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather prediction
+
+# Text to speech
+tts:
+  - platform: google
+
+group: !include groups.yaml
+automation: !include_dir_list automations/
+script: !include_dir_merge_named scripts/
+input_boolean: !include misc/input_boolean.yaml
+input_select: !include misc/input_select.yaml
+#scene: !include scenes.yaml
+#automation: !include automations.yaml
+
+vacuum:
+- platform: xiaomi_miio
+  name: 'Tuss'
+  host: 192.168.1.55
+  token: !secret xiaomi_vacuum
+
+
+#emulated_hue:
+#  host_ip: 192.168.1.100
+
+
+switch:
+  - platform: mqtt
+    name: "Klimatkontroll"
+    state_topic: "hass/car_climate"
+    command_topic: "hass/car_climate/set"
+    payload_on: "ON"
+    payload_off: "OFF"
+    icon: mdi:car
+  - platform: mqtt
+    name: "Sonoff"
+    state_topic: "stat/sonoff-1/POWER"
+    command_topic: "cmnd/sonoff-1/POWER"
+    availability_topic: "tele/sonoff-1/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+sensor:
+  - platform: yr
+
+  - platform: nut
+    name: ups
+    host: 192.168.1.10
+    port: 3493
+    username: !secret ups_login
+    pass: !secret ups_pass
+    resources:
+      - ups.load
+      - ups.status
+      - battery.voltage
+      - battery.charge
+      - input.voltage
+
+  - platform: mqtt
+    name: "Kontoret temperature"
+    state_topic: "tele/sonoff-1/SENSOR"
+    value_template: "{{ value_json['DHT22'].Temperature }}"
+    unit_of_measurement: "°C"
+  - platform: mqtt
+    name: "Kontoret Humidity"
+    state_topic: "tele/sonoff-1/SENSOR"
+    value_template: "{{ value_json['DHT22'].Humidity }}"
+    unit_of_measurement: "%"
+
+  - platform: octoprint
+    name: OctoPrint
+    monitored_conditions:
+      - Current State
+      - Temperatures
+      - Job Percentage
+
+binary_sensor:
+  - platform: octoprint
+    monitored_conditions:
+      - Printing
+      - Printing Error

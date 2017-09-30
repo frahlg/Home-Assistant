@@ -1,0 +1,235 @@
+# Switchar
+
+switch.utebelysning_switch:
+    friendly_name: Utebelysning uppfarten
+    homebridge_visible: true
+binary_sensor.utebelysning_int2:
+    hidden: true
+binary_sensor.utebelysning_int3:
+    hidden: true
+sensor.utebelysning_power:
+    friendly_name: Utebelysning effekt
+sensor.utebelysning_energy:
+    friendly_name: Energi utebelysning uppfarten
+
+switch.markis_allrum_switch:
+    hidden: true
+
+switch.elbil_switch:
+    friendly_name: Switch elbil
+    homebridge_visible: true
+sensor.elbil_power:
+    friendly_name: Effekt laddning elbil
+sensor.elbil_energy:
+    friendly_name: Energi laddning elbil
+sensor.elbil_temperature:
+    friendly_name: Temperatur garagevind
+    homebridge_visible: true
+binary_sensor.elbil_int2:
+    hidden: true
+binary_sensor.elbil_int3:
+    hidden: true
+
+
+#switch.fibaro_system_fgwpef_wall_plug_gen5_switch_2_0:
+#    friendly_name: Fibaro Plug
+
+switch.cykelbatteri_switch:
+    friendly_name: 'Cykelbatteri'
+    homebridge_visible: true
+sensor.cykelbatteri_energy:
+    friendly_name: 'Cykelbatteri energi'
+sensor.cykelbatteri_power:
+    friendly_name: 'Cykelbatteri effekt'
+
+
+####
+#### Mina Motion sensors
+####
+
+# Allrum övervåning
+
+
+binary_sensor.allrum_floor2_sensor:
+    friendly_name: 'Rörelse ovanvåning'
+    device_class: motion
+    homebridge_visible: true
+sensor.allrum_floor2_temperature:
+    friendly_name: 'Temperatur allrum övervåning'
+    homebridge_visible: true
+sensor.allrum_floor2_luminance:
+    friendly_name: 'Ljus allrum övervåning'
+    homebridge_visible: true
+sensor.allrum_floor2_ultraviolet:
+    friendly_name: 'UV-ljus allrum övervåning'
+    homebridge_visible: true
+sensor.allrum_floor2_relative_humidity:
+    friendly_name: 'RF allrum övervåning'
+    homebridge_visible: true
+
+
+
+# Kontoret
+
+binary_sensor.kontoret_sensor:
+    friendly_name: Rörelse kontor
+    device_class: motion
+    homebridge_visible: true
+sensor.kontoret_temperature:
+    friendly_name: Temperatur kontoret
+    homebridge_visible: true
+sensor.kontoret_luminance:
+    friendly_name: Ljus kontoret
+    homebridge_visible: true
+
+# Hallen
+
+binary_sensor.hallen_sensor_sensor:
+    friendly_name: Rörelse hallen
+    device_class: motion
+    homebridge_visible: true
+sensor.hallen_luminance:
+    friendly_name: Ljus hallen
+    homebridge_visible: true
+
+# Tvättstuga
+binary_sensor.tvattstuga_sensor:
+    friendly_name: Rörelse tvättstuga
+    device_class: motion
+    homebridge_visible: true
+sensor.tvattstuga_temperature:
+    friendly_name: Temperatur tvättstuga
+    homebridge_visible: true
+sensor.tvattstuga_luminance:
+    friendly_name: Ljus tvättstuga
+    homebridge_visible: true
+
+
+# Vardagsrum
+
+binary_sensor.vardagsrum_sensor:
+    friendly_name: Rörelse vardagsrum
+    device_class: motion
+    homebridge_visible: true
+sensor.vardagsrum_temperature:
+    friendly_name: Temperatur vardagsrum
+    homebridge_visible: true
+sensor.vardagsrum_luminance:
+    friendly_name: Ljus vardagsrum
+    homebridge_visible: true
+
+
+
+binary_sensor.ovanvaning_brand_sensor:
+    friendly_name: Rök ovanvåning
+    device_class: smoke
+    homebridge_visible: true
+binary_sensor.tvattstuga_brand_sensor:
+    friendly_name: Rök tvättstuga
+    device_class: smoke
+    homebridge_visible: true
+
+binary_sensor.dorr_kontoret_sensor:
+    friendly_name: Dörr kontoret uterum
+    device_class: opening
+    homebridge_visible: true
+binary_sensor.dorr_tvattstuga_sensor:
+    friendly_name: Dörr tvättstuga garage
+    device_class: opening
+    homebridge_visible: true
+binary_sensor.dorr_vardagsrum_sensor:
+    friendly_name: Dörr vardagsrum trädgård
+    device_class: opening
+    homebridge_visible: true
+binary_sensor.dorr_ytterdorr_sensor:
+    friendly_name: Ytterdörr
+    device_class: opening
+    homebridge_visible: true
+binary_sensor.dorr_biblioteket_sensor:
+    friendly_name: Dörr biblioteket uterum
+    device_class: opening
+    homebridge_visible: true
+ 
+#
+
+switch.tehorna_dimmer_switch:
+    friendly_name: 'Tehörna dimmer switch'
+    homebridge_visible: false
+light.tehorna_dimmer_level:
+    friendly_name: Tehörna dimmer
+    homebridge_visible: true
+
+
+cover.markis_allrum_level:
+    friendly_name: Markis övervåning
+    homebridge_cover_type: rollershutter
+    device_class: rollershutter
+    homebridge_visible: true
+
+cover.markis_allrum_switch:
+    friendly_name: Markis övervåning
+    homebridge_cover_type: rollershutter
+    device_class: rollershutter
+    hidden: true
+
+# Let's hide the siren, dont want it to set off by mistake.
+
+switch.siren_switch:
+    friendly_name: Larmsiren
+    hidden: true
+
+light.tradfri_bulb_e27_opal_1000lm_2:
+    friendly_name: Kontoret taklampa
+
+light.tradfri_bulb_e27_ws_opal_980lm:
+    friendly_name: Uterum vägglampa
+
+
+# Här kommer allt som ska exluderas från Homebridge
+
+light.bilen:
+    homebridge_hidden: true
+light.trappen:
+    homebridge_hidden: true
+light.ljuslist:
+    homebridge_hidden: true
+light.taklampa_hallen:
+    homebridge_hidden: true
+light.arbetsrum_taklampa:
+    homebridge_hidden: true
+light.hall_utanfor_tvattstugan:
+    homebridge_hidden: true
+light.matbord:
+    homebridge_hidden: true
+light.tvattstuga_taklampa_2:
+    homebridge_hidden: true
+light.glaslampa:
+    homebridge_hidden: true
+light.bathroom_nere:
+    homebridge_hidden: true
+light.stairs:
+    homebridge_hidden: true
+light.taklampa_badrum_nere:
+    homebridge_hidden: true
+light.hallen:
+    homebridge_hidden: true
+light.tvattstuga:
+    homebridge_hidden: true
+light.tvattstuga_taklampa_1:
+    homebridge_hidden: true
+light.badrum_nere:
+    homebridge_hidden: true
+light.nedanfor_trappen:
+    homebridge_hidden: true
+light.tesalong:
+    homebridge_hidden: true
+light.kitchen:
+    homebridge_hidden: true
+light.badrum_uppe:
+    homebridge_hidden: true
+light.library:
+    homebridge_hidden: true
+light.taklampa_bibliotek:
+    homebridge_hidden: true
+media_player.kitchen_home:
+    homebridge_hidden: true

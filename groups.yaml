@@ -1,0 +1,125 @@
+#default_view:
+#  view: yes
+#  icon: mdi:home
+#  entities:
+#    - group.lights
+
+
+### Views
+
+alarm_panel:
+  name: Alarm panel
+  view: yes
+  entities:
+    - group.cameras
+    - input_select.alarm_select
+    - input_boolean.disarm_the_alarm
+    - alarm_control_panel.ha_alarm
+    - binary_sensor.blink_armed_status
+    - script.arm_blink
+    - script.disarm_blink
+    - script.snap_blink_pic
+    - binary_sensor.allrum_floor2_sensor
+    - binary_sensor.dorr_biblioteket_sensor
+    - binary_sensor.dorr_kontoret_sensor
+    - binary_sensor.dorr_tvattstuga_sensor
+    - binary_sensor.dorr_vardagsrum_sensor
+    - binary_sensor.dorr_ytterdorr_sensor
+    - binary_sensor.hallen_sensor
+    - binary_sensor.kontoret_sensor
+    - binary_sensor.ovanvaning_brand_sensor
+    - binary_sensor.tvattstuga_brand_sensor
+    - binary_sensor.tvattstuga_sensor
+
+
+huset:
+  name: Huset
+  view: yes
+  entities:
+    - group.temperaturer
+    - group.vardagsrum
+    - group.belysning_huset
+    - group.kontor
+    - scene.night
+    - group.motion
+
+
+#### Groups
+
+motion:
+    name: Rörelsesensorer
+    entities:
+        - binary_sensor.allrum_floor2_sensor
+        - binary_sensor.dorr_biblioteket_sensor
+        - binary_sensor.dorr_kontoret_sensor
+        - binary_sensor.dorr_tvattstuga_sensor
+        - binary_sensor.dorr_vardagsrum_sensor
+        - binary_sensor.dorr_ytterdorr_sensor
+        - binary_sensor.hallen_sensor
+        - binary_sensor.kontoret_sensor
+        - binary_sensor.tvattstuga_sensor
+
+
+
+
+temperaturer:
+  name: Temperatur
+  entities:
+    - sensor.allrum_floor2_temperature
+    - sensor.elbil_temperature
+    - sensor.hallen_temperature
+    - sensor.kontoret_temperature
+    - sensor.ovanvaning_brand_temperature
+    - sensor.tvattstuga_brand_temperature
+    - sensor.tvattstuga_temperature
+    - sensor.vardagsrum_temperature
+    - sensor.blink_arbetsrum_temperature
+    - sensor.blink_kamin_temperature
+    - sensor.blink_vardagsrum_temperature
+   
+
+ljus_miljo:
+  name: Ljus och inomhusmiljö
+  entities:
+    - sensor.hallen_luminance
+    - sensor.kontoret_luminance
+    - sensor.tvattstuga_luminance
+    - sensor.vardagsrum_luminance
+    - sensor.allrum_floor2_luminance
+    - sensor.allrum_floor2_relative_humidity
+    - sensor.allrum_floor2_ultraviolet
+
+cameras:
+  name: Kameror
+  entities:
+    - camera.uppfart
+    - camera.kamin
+    - camera.arbetsrum
+    - camera.vardagsrum
+
+belysning_huset:
+  name: Belysning i huset
+  entities:
+    - light.badrum_nere
+    - light.glaslampa
+    - light.hall_utanfor_tvattstugan
+    - light.gustavs_rum
+    - light.huset
+    - light.kitchen
+    - light.nedanfor_trappen
+    - light.office
+    - light.tvattstuga
+    - light.tradfri_bulb_e27_opal_1000lm_2
+    - light.tradfri_bulb_e27_ws_opal_980lm
+
+vardagsrum:
+  name: vardagsrum
+  entities:
+    - light.glaslampa
+    - light.huset
+    - light.kitchen
+    - light.nedanfor_trappen
+    - light.office
+    - light.tvattstuga
+    - light.tradfri_bulb_e27_opal_1000lm_2
+    - light.tradfri_bulb_e27_ws_opal_980lm
