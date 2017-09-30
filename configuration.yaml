@@ -22,7 +22,7 @@ recorder:
 
 octoprint:
   host: 192.168.1.13
-  api_key: BEEE66BA7C60445D94E5A9F18F4B79A4
+  api_key: !secret octoprint_key
   bed: true
   number_of_tools: 1
 
