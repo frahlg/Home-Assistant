@@ -1,0 +1,15 @@
+disarm_the_alarm:
+  name: Disarm alarm!
+  initial: off
+
+fredrik_home:
+  name: Fredrik hemma
+  icon: mdi:human-male
+
+madeleine_home:
+  name: Madeleine hemma
+  icon: mdi:human-female
+
+trigger_first_morning:
+  name: Waiting for first morning motion
+  icon: mdi:kettle

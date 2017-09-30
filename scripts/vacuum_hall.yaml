@@ -1,0 +1,37 @@
+vacuum_hall:
+  alias: Vacuum hall
+  sequence:
+    - service: vacuum.xiaomi_remote_control_start
+      entity_id: vacuum.tuss
+    - service: vacuum.set_fan_speed
+      entity_id: vacuum.tuss
+      data:
+        fan_speed: 10
+    - delay:
+        seconds: 10
+    - service: vacuum.xiaomi_remote_control_move
+      data:
+        entity_id: vacuum.tuss
+        velocity: '0.27'
+        rotation: '-7'
+        duration: '7800'
+    - delay:
+        seconds: 8
+    - service: vacuum.xiaomi_remote_control_move
+      data:
+        entity_id: vacuum.tuss
+        velocity: '0.27'
+        rotation: '7'
+        duration: '7800'
+    - delay:
+        seconds: 8
+    - service: vacuum.xiaomi_remote_control_move
+      entity_id: vacuum.tuss
+      data:
+        velocity: '0.29'
+        rotation: '0'
+        duration: '2000'
+    - delay:
+        seconds: 10
+    - service: vacuum.clean_spot
+      entity_id: vacuum.tuss

@@ -1,0 +1,9 @@
+alias: 'Power off - UPS'
+trigger:
+  - platform: state
+    entity_id: sensor.ups_status_data
+    to: 'OB'
+action:
+    - service: notify.push
+      data:
+        message: 'Ström avbruten - UPS online'

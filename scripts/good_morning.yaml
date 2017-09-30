@@ -1,0 +1,12 @@
+google_home_good_morning:
+  alias: Good morning Google Home P1
+  sequence:
+    - service: media_player.volume_set
+      entity_id: media_player.kitchen_home
+      data:
+        volume_level: "0.4"
+    - service: media_player.play_media
+      entity_id: media_player.kitchen_home
+      data:
+        media_content_id: "http://http-live.sr.se/p1-aac-96"
+        media_content_type: "audio/aac"

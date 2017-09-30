@@ -1,0 +1,25 @@
+fredrik_status:
+  name: Fredrik Status
+  options:
+   - "Home"
+   - "Work"
+   - "Away"
+   - "Sleeping"
+  initial: "Home"
+####
+madeleine_status:
+  name: Madeleine Status
+  options:
+   - "Home"
+   - "Work"
+   - "Away"
+   - "Sleeping"
+  initial: "Home"
+####
+alarm_select:
+  name: Alarm status
+  options:
+   - "Disarmed"
+   - "Alarm home"
+   - "Alarm away"
+  initial: "Disarmed"

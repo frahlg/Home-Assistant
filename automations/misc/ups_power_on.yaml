@@ -1,0 +1,10 @@
+alias: 'Power on - UPS'
+trigger:
+  - platform: state
+    entity_id: sensor.ups_status_data
+    from: 'OB'
+    to: 'OL'
+action:
+    - service: notify.push
+      data:
+        message: 'Strömmen är tillbaka - UPS'

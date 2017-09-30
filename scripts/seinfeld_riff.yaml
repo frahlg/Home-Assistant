@@ -1,0 +1,18 @@
+seinfeld_alarm_pending:
+  alias: Seinfeld riff when alarm pending
+  sequence:
+    - service: media_player.volume_set
+      entity_id: media_player.kitchen_home
+      data:
+        volume_level: "0.8"
+    - delay: 00:00:02
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.kitchen_home
+        media_content_id: "http://192.168.1.100:8123/local/sounds/seinfeld.wav"
+        media_content_type: MUSIC
+    - delay: 00:00:05
+    - service: media_player.volume_set
+      entity_id: media_player.kitchen_home
+      data:
+        volume_level: "0.4"
