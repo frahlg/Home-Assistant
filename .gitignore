@@ -1,6 +1,6 @@
 *
 !*.yaml
-!automations/**
+!automations
 !alarm
 !battery
 !motion

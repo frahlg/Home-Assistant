@@ -1,0 +1,14 @@
+alias: 'Fire alarm!'
+trigger:
+    - platform: state
+      entity_id: binary_sensor.ovanvaning_brand_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.tvattstuga_brand_sensor
+      to: 'on'
+action:
+    - service: notify.push
+      data:
+        message: 'Brandlarm!!!'
+    - service: script.turn_on
+      entity_id: script.brandlarm

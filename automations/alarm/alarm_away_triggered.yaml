@@ -1,0 +1,8 @@
+alias: 'Alarm away triggered, countdown'
+trigger:
+    - platform: state
+      entity_id: alarm_control_panel.ha_alarm
+      to: triggered
+action:
+    - service: script.turn_on
+      entity_id: script.alarm_triggered

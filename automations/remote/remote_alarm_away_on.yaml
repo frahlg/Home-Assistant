@@ -1,0 +1,12 @@
+alias: 'Alarm remote control'
+trigger:
+  - platform: event
+    event_type: zwave.scene_activated
+    event_data:
+        entity_id: zwave.nodon
+        scene_id: 10
+action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.alarm_select
+      option: 'Alarm away'

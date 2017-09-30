@@ -1,0 +1,33 @@
+alias: 'Trigger alarm while armed away'
+trigger:
+    - platform: state
+      entity_id: binary_sensor.dorr_biblioteket_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.dorr_kontoret_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.dorr_vardagsrum_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.hallen_sensor
+      to: 'on'
+    - platform: state
+      entity_id: bbinary_sensor.kontoret_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.tvattstuga_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.vardagsrum_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.allrum_floor2_sensor
+      to: 'on'
+condition:
+    - condition: state
+      entity_id: alarm_control_panel.ha_alarm
+      state: armed_away
+action:
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.ha_alarm

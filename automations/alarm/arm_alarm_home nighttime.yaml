@@ -1,0 +1,12 @@
+alias: 'Arming alarm home at nighttime'
+trigger:
+  - platform: time
+    at: '22:30:00'
+condition:
+  - condition: state
+    entity_id: alarm_control_panel.ha_alarm
+    state: 'disarmed'
+action:
+  - service: alarm_control_panel.alarm_arm_home
+    data:
+      entity_id: alarm_control_panel.ha_alarm

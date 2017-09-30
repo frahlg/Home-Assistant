@@ -1,0 +1,8 @@
+alias: 'Arming alarm home'
+trigger:
+  - platform: state
+    entity_id: input_select.alarm_select
+    to: 'Alarm home'
+action:
+  - service: script.turn_on
+    entity_id: script.alarm_set_home

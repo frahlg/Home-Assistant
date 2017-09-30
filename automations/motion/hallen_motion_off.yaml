@@ -1,0 +1,12 @@
+alias: 'Lampa av hallen'
+trigger:
+  - platform: state
+    entity_id: binary_sensor.hallen_sensor
+    to: 'off'
+    for:
+      minutes: 10
+action:
+  - service: light.turn_off
+    entity_id: light.taklampa_hallen
+  - service: light.turn_off
+    entity_id: light.nedanfor_trappen

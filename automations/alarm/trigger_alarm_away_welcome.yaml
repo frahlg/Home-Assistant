@@ -1,0 +1,15 @@
+alias: 'Trigger alarm while armed away - welcome home'
+trigger:
+    - platform: state
+      entity_id: binary_sensor.dorr_tvattstuga_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.dorr_ytterdorr_sensor
+      to: 'on'
+condition:
+    - condition: state
+      entity_id: alarm_control_panel.ha_alarm
+      state: armed_away
+action:
+    - service: script.turn_on
+      entity_id: script.alarm_away_door_welcome_triggered

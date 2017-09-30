@@ -1,0 +1,10 @@
+alias: 'Stäng av lampa i tvättstuga'
+trigger:
+  - platform: state
+    entity_id: binary_sensor.tvattstuga_sensor
+    to: 'off'
+    for:
+      minutes: 5
+action:
+  - service: light.turn_off
+    entity_id: light.tvattstuga

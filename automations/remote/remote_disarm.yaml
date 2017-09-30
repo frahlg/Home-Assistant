@@ -1,0 +1,17 @@
+alias: 'Disarm alarm with remote control'
+trigger:
+  - platform: event
+    event_type: zwave.scene_activated
+    event_data:
+        entity_id: zwave.nodon
+        scene_id: 30
+action:
+  - service: alarm_control_panel.alarm_disarm
+    entity_id: alarm_control_panel.ha_alarm
+  - service: input_select.select_option
+    data:  
+      entity_id: input_select.alarm_select
+      option: 'Disarmed'
+  - service: notify.push
+    data:
+      message: "Alarm disarmed"

@@ -1,0 +1,14 @@
+alias: 'Timer cykelbatteri'
+trigger:
+  - platform: state
+    entity_id: switch.cykelbatteri_switch
+    to: 'on'
+    for:
+      minutes: 30
+condition: 
+  condition: numeric_state
+  entity_id: sensor.cykelbatteri_power
+  below: '10'
+action:
+  - service: switch.turn_off
+    entity_id: switch.cykelbatteri_switch

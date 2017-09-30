@@ -1,0 +1,12 @@
+alias: 'Lampa på arbetsrum'
+trigger:
+  - platform: state
+    entity_id: binary_sensor.kontoret_sensor
+    to: 'on'
+condition:
+  - condition: numeric_state
+    entity_id: sensor.kontoret_luminance
+    below: 200
+action:
+  - service: light.turn_on
+    entity_id: light.taklampa_kontoret

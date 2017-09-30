@@ -1,0 +1,24 @@
+alias: 'Trigger alarm while home'
+trigger:
+    - platform: state
+      entity_id: binary_sensor.dorr_biblioteket_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.dorr_kontoret_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.dorr_tvattstuga_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.dorr_vardagsrum_sensor
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.dorr_ytterdorr_sensor
+      to: 'on'
+condition:
+    - condition: state
+      entity_id: alarm_control_panel.ha_alarm
+      state: armed_home
+action:
+    - service: script.turn_on
+      entity_id: script.alarm_home_triggered

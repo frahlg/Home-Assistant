@@ -1,0 +1,8 @@
+alias: 'Arming alarm away'
+trigger:
+  - platform: state
+    entity_id: input_select.alarm_select
+    to: 'Alarm away'
+action:
+  - service: script.turn_on
+    entity_id: script.alarm_set_away

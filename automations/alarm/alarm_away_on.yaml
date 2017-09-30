@@ -1,0 +1,10 @@
+alias: 'Actions after alarm away is activated'
+hide_entity: true
+trigger:
+    - platform: state
+      entity_id: alarm_control_panel.ha_alarm
+      from: pending
+      to: armed_away
+action:
+    - service: script.turn_on
+      entity_id: script.arm_blink

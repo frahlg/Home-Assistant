@@ -1,0 +1,10 @@
+alias: 'Lampa av arbetsrum'
+trigger:
+  - platform: state
+    entity_id: binary_sensor.kontoret_sensor
+    to: 'off'
+    for:
+      minutes: 20
+action:
+  - service: light.turn_off
+    entity_id: light.taklampa_kontoret
