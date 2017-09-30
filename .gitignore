@@ -1,6 +1,12 @@
 *
 !*.yaml
-!/automations/**
+!automations/**
+!alarm
+!battery
+!motion
+!remote
+!sun
+!time
 !misc
 !scripts
 !scenes
